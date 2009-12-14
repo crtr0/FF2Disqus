@@ -1,0 +1,8 @@
+<html>
+  <body>
+    <p>There are {{ count }} users</p>
+    {% for user in users %}
+    <p>{{ user.ff_user }} {{ user.last_sync }}</p>
+    {% endfor %}
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<html>
+<head>
+
+<title>FriendFeed-to-Disqus Sync</title>
+<link rel="shortcut icon" href="/favicon.ico"/> 
+<link rel="stylesheet" href="/static/core.css" type="text/css"/>
+<script type="text/javascript" src="/static/prototype-1.6.0.3.js"></script>
+<script type="text/javascript" src="/static/ff2disqus.js"></script>
+
+</head>
+
+<body>
+<div id="container">
+<div id="apps">
+Our other handy apps &rarr;
+<a title="Twitter-to-Mail" href="https://twitter2mail.appspot.com"><img src="https://twitter2mail.appspot.com/static/t2mail.gif" height="16" width="16" border="0"/></a>
+<a title="Twitter-to-FriendFeed" href="https://twitter2ff.appspot.com"><img src="https://twitter2ff.appspot.com/static/t2ff_icon.png" height="16" width="16" border="0"/></a>
+</div>
+<img style="float:left;margin-right:5px" src="/static/ff2d.png"/>
+<div id="header">FriendFeed-to-Disqus Sync<div style="margin-left:5px">alpha v0.33 - your mileage may vary!</div></div>
+<p>Written by Carter Rabasa <a href="http://cubanlinks.org">[web]</a> <a href="http://friendfeed.com/cubanlinks">[ff]</a> <a href="http://twitter.com/cubanlinks">[t]</a></p>
+<div id="disclaimer">Disclaimer:  A couple notes about posting to Disqus - Comments are posted using a bogus email address.  
+Email is a required field to post a comment to Disqus, but FriendFeed does not provide emails in its API.  So, the email used is [ff nickname]@bogus_email.com.
+</div>
+<p>FF2Disqus is a simple script for syncing comments between matching "threads" on Disqus
+and FriendFeed.  Simply enter your credentials, select the appropriate Disqus site, match it to a FF service and click "Save Info".
+Once your information is saved any new comments that appear on your FF entries for the service you've chosen will be copied to Disqus.
+Currently this happens once an hour, but we provide a "ping" url if you'd like to sync more often. Most importantly, you
+can stop the syncing process at any time by selecting "Off" and saving. <a href="http://cubanlinks.org/blog/2009/01/10/ff2disqus-v03/">[more info]</a>
+</p>
+<div id="message" style="display:none">
+Thank you! Your comments will be automatically synced every hour.  If you'd like to ping us to
+sync your comments manually, just hit <a id="ping_url" href="">this url</a>.
+</div>
+<div id="form">
+<span style="color:red">All fields and drop-downs are required. Please ensure that your selections
+for Disqus Site and FriendFeed Service match.</span>
+<h2>Disqus</h2>
+<p>API key <a href="http://disqus.com/api/get_my_key/" target="_blank">(need key?)</a>: <input id="disqus_api_key" type="password" size="20" value=""/>
+<input type="button" id="disqus_button" value="Get Sites" onClick="disqus()"/> &rarr;
+Site: <select id="disqus_forum_list" onChange="getForumApiKey()">
+<option value="">Please select a site</option>
+</select>
+<input type="hidden" id="d_forum_key"/>
+</p>
+<h2>FriendFeed</h2> 
+<input type="text" id="ff_nickname" size="18" value="nickname"/>
+<input type="button" id="ff_button" value="Get Services" onClick="ff()" disabled="true"/> &rarr;
+Service: <select id="ff_service">
+<option value="">Please select a service</option>
+</select>
+(supported: blog, tumblr, feed)
+</p>
+<h2>FriendFeed-to-Disqus</h2>
+<p>Sync Mode: <select id="sync_mode">
+<option value="0">Off</option>
+<option value="1">FF &rarr; Disqus</option>
+</select>
+</p>
+<p><input id="save_button" type="button" value="Save Info" onClick="saveUser()" disabled="true"/></p>
+</div>
+<div id="log_header" style="display:none"><b>Comment Sync Log (last 20 entries)</b> <a id="log_link" href="javascript:toggle()">(show)</a></div>
+<div id="log" style="display:none"></div>
+</div>
+</body>
+</html>
